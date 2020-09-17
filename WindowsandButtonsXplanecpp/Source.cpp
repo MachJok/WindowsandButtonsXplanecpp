@@ -71,7 +71,7 @@ PLUGIN_API int XPluginStart(char* outName, char* outSig, char* outDesc) //points
 	params.right = params.left + 200;
 	params.top = params.bottom + 200;
 
-	my_window = XPLMCreateWindowEx(&params); //pass in the param struct 
+	my_window = XPLMCreateWindowEx(&params); //pass in the param struct This is also what becomes the in_window_id somehow
 	
 	XPLMSetWindowPositioningMode(my_window, xplm_WindowPositionFree, -1); //sets my_window to be movable by user and on monitor idx -1 which is the xpl window
 	XPLMSetWindowResizingLimits(my_window, 200, 200, 300, 300);
