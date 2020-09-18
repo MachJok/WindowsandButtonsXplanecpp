@@ -2,6 +2,8 @@
 #include "XPLMGraphics.h"
 #include <string>
 
+#include "Classes.h"
+
 #if IBM
 #include <windows.h>
 #endif
@@ -55,12 +57,12 @@ PLUGIN_API int XPluginStart(char* outName, char* outSig, char* outDesc) //points
 	params.structSize = sizeof(params);
 	params.visible = 1;
 	params.drawWindowFunc = draw_hello_world; //we tell XPLMCreateWindow_t to use the draw function callback we defined earlier
-	params.handleMouseClickFunc = dummy_mouse_handler;
-	params.handleRightClickFunc = dummy_mouse_handler;
-	params.handleMouseWheelFunc = dummy_wheel_handler;
+	params.handleMouseClickFunc = MouseHandler::DummyMouseClickHandler;
+	params.handleRightClickFunc = MouseHandler::DummyMouseClickHandler;
+	params.handleMouseWheelFunc = MouseHandler::DummyWheelHandler;
 	params.handleKeyFunc = dummy_key_handler;
 	params.handleCursorFunc = dummy_cursor_status_handler;
-	params.refcon = NULL;
+	params.refcon = NULL; //we pass NULL to all of our inRefcons
 	params.layer = xplm_WindowLayerFloatingWindows; //tell the sim to make the window float over the sim like other native xplane windows
 	params.decorateAsFloatingWindow = xplm_WindowDecorationRoundRectangle; //decorate the window like native xplane windows
 
